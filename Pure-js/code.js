@@ -162,7 +162,7 @@ function plotTimings(){
     //draw legend
     ctx.setLineDash([]);
     ctx.fillStyle = 'black';
-    ctx.fillText("Legend: ", canvas.width - padding - 70, padding);
+    ctx.fillText("Legend: ", canvas.width - padding - 75, padding);
 
     ctx.strokeStyle = 'green';
     ctx.beginPath();
