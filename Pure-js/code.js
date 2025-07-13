@@ -2,7 +2,7 @@
 
 console.log("Experimental runs started");
 
-const N = 100;
+const N = 1000;
 
 let end; 
 let start;
@@ -41,7 +41,7 @@ function multiply(mat1, mat2, res){
 
 
 //async function to run experiment
-const runs = 10;
+const runs = 50;
 const timings = [];
 
 async function runExperiment(){
@@ -164,7 +164,7 @@ function plotTimings(){
     ctx.fillStyle = 'black';
     ctx.fillText("Legend: ", canvas.width - padding - 70, padding);
 
-    ctx.strokeStyle = 'blue';
+    ctx.strokeStyle = 'green';
     ctx.beginPath();
     ctx.moveTo(canvas.width - padding - 80, padding + 15);
     ctx.lineTo(canvas.width - padding - 50, padding + 15);
