@@ -2,7 +2,7 @@
 
 console.log("Experimental runs started");
 
-const N = 1000;
+const N = 100;
 
 let end; 
 let start;
