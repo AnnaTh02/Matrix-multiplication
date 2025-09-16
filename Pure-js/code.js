@@ -2,7 +2,7 @@
 
 console.log("Experimental runs started");
 
-const N = 100;
+const N = 500;
 
 let end; 
 let start;
@@ -90,7 +90,8 @@ function plotTimings(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     const padding = 50; 
-    const width = canvas.width - padding * 2;
+    const leftPadding = 80;
+    const width = canvas.width - leftPadding - padding * 2;
     const height = canvas.height - padding * 2;
 
     const maxTime = Math.max(...timings);
@@ -102,8 +103,8 @@ function plotTimings(){
     ctx.strokeStyle='black'
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(padding, padding);
-    ctx.lineTo(padding, canvas.height - padding);
+    ctx.moveTo(leftPadding, padding);
+    ctx.lineTo(leftPadding, canvas.height - padding);
     ctx.lineTo(canvas.width - padding, canvas.height - padding);
     ctx.stroke();
 
@@ -115,10 +116,10 @@ function plotTimings(){
     for(let i = 0; i <= steps; i++){
         const val = minTime + (i * (maxTime - minTime)) / steps; 
         const y = canvas.height - padding - (val - minTime) * scaleY;
-        ctx.fillText(val.toFixed(1) + ' ms', padding - 10, y);
+        ctx.fillText(val.toFixed(1) + ' ms', leftPadding - 10, y);
         ctx.beginPath();
-        ctx.moveTo(padding - 5, y);
-        ctx.lineTo(padding, y);
+        ctx.moveTo(leftPadding - 5, y);
+        ctx.lineTo(leftPadding, y);
         ctx.stroke();
     }
 
@@ -128,7 +129,7 @@ function plotTimings(){
     const labelCount = Math.min(10, timings.length);
     for(let i = 0; i < labelCount; i++){
         const index = Math.floor((i / (labelCount - 1)) * (timings.length - 1));
-        const x = padding + index * scaleX;
+        const x = leftPadding + index * scaleX;
         ctx.fillText(index + 1, x, canvas.height - padding + 5);
         ctx.beginPath();
         ctx.moveTo(x, canvas.height - padding); 
@@ -138,10 +139,10 @@ function plotTimings(){
 
     //Draw performance line
     ctx.beginPath();
-    ctx.moveTo(padding, canvas.height - padding - (timings[0] - minTime) * scaleY);
+    ctx.moveTo(leftPadding, canvas.height - padding - (timings[0] - minTime) * scaleY);
 
     for(let k = 0; k <timings.length; k++){
-        const x = padding + k * scaleX;
+        const x = leftPadding + k * scaleX;
         const y = canvas.height - padding - (timings[k] - minTime) * scaleY;
         ctx.lineTo(x, y);
     }
